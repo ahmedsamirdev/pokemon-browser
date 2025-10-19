@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-900 bg-gray-50;
+  }
+}
+
+@layer components {
+  .pokemon-card {
+    @apply p-4 transition-shadow duration-200 bg-white rounded-lg shadow-md cursor-pointer hover:shadow-lg;
+  }
+
+  .pokemon-card:hover {
+    @apply transition-transform duration-200 transform scale-105;
+  }
+
+  .type-badge {
+    @apply px-2 py-1 text-xs font-medium text-white capitalize rounded-full;
+  }
+
+  .type-normal {
+    @apply bg-gray-500 !important;
+  }
+  .type-fire {
+    @apply bg-red-500 !important;
+  }
+  .type-water {
+    @apply bg-blue-500 !important;
+  }
+  .type-electric {
+    @apply bg-yellow-500 !important;
+  }
+  .type-grass {
+    @apply bg-green-500 !important;
+  }
+  .type-ice {
+    @apply bg-cyan-400 !important;
+  }
+  .type-fighting {
+    @apply bg-red-700 !important;
+  }
+  .type-poison {
+    @apply bg-purple-500 !important;
+  }
+  .type-ground {
+    @apply bg-yellow-600 !important;
+  }
+  .type-flying {
+    @apply bg-indigo-400 !important;
+  }
+  .type-psychic {
+    @apply bg-pink-500 !important;
+  }
+  .type-bug {
+    @apply bg-green-400 !important;
+  }
+  .type-rock {
+    @apply bg-yellow-800 !important;
+  }
+  .type-ghost {
+    @apply bg-purple-700 !important;
+  }
+  .type-dragon {
+    @apply bg-indigo-600 !important;
+  }
+  .type-dark {
+    @apply bg-gray-800 !important;
+  }
+  .type-steel {
+    @apply bg-gray-400 !important;
+  }
+  .type-fairy {
+    @apply bg-pink-300 !important;
+  }
+}
