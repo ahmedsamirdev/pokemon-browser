@@ -65,15 +65,6 @@ export const formatHeight = (height: number): string => {
 };
 
 /**
- * Capitalize the first letter of a string
- * @param str - String to capitalize
- * @returns string - Capitalized string
- */
-export const capitalize = (str: string): string => {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-};
-
-/**
  * Get Pokémon type effectiveness (simplified version)
  * @param attackType - The attacking type
  * @param defenseType - The defending type

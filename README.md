@@ -1,6 +1,24 @@
 # Pokémon Browser
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-blue?style=for-the-badge&logo=vercel)](https://pokemon-browser-ochre.vercel.app/)
+
 A responsive Pokémon browser built with React, TypeScript, and Tailwind CSS. This application allows users to browse Pokémon with two different viewing modes: pagination and load more functionality.
+
+## 🖼️ Screenshots
+
+<div align="center">
+  <h3>Homepage - Pokemon List</h3>
+  <a href="https://pokemon-browser-ochre.vercel.app/" target="_blank">
+    <img src="./public/screenshot-homepage.png" alt="Pokémon Browser Homepage" width="600" height="600" style="border-radius: 8px; cursor: pointer; border: 2px solid #e5e7eb; margin-bottom: 20px;">
+  </a>
+  
+  <h3>Pokemon Detail Page</h3>
+  <a href="https://pokemon-browser-ochre.vercel.app/" target="_blank">
+    <img src="./public/screenshot-detail.png" alt="Pokémon Detail Page" width="600" height="600" style="border-radius: 8px; cursor: pointer; border: 2px solid #e5e7eb;">
+  </a>
+  
+  <p><em>Click any image to view the live demo</em></p>
+</div>
 
 ## Features
 
@@ -61,7 +79,7 @@ The combination of **React Query + Suspense + Error Boundaries** provides a supe
 ### Prerequisites
 
 - Node.js (version 16 or higher)
-- npm or yarn
+- pnpm (recommended) or npm
 
 ### Installation
 
@@ -75,33 +93,16 @@ cd pokemon-browser
 2. Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. Start the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 4. Open your browser and navigate to `http://localhost:5173`
-
-### Available Scripts
-
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production (TypeScript compilation + Vite build)
-- `npm run preview` - Preview production build locally
-- `npm run lint` - Run ESLint with TypeScript support
-
-### Development Setup
-
-The project uses:
-
-- **pnpm** as the package manager (recommended)
-- **TypeScript** with strict configuration
-- **ESLint** for code quality
-- **Path aliases** (`@/` for `src/`) for clean imports
-- **Hot reload** for instant development feedback
 
 ## Project Structure
 
@@ -173,112 +174,6 @@ The application uses custom React Query hooks for better code organization and r
 - **`useGetPokemonById`**: Fetches individual Pokémon details by ID
 - **`useGetPokemonByName`**: Fetches Pokémon details by name (for search functionality)
 
-#### Usage Example:
-
-```typescript
-// In a component
-const { pokemon, isLoading, isError, refetch } = useGetPokemonById({
-  id: 1,
-  enabled: true,
-});
-
-// For pagination
-const { pokemonList, isLoading, isError } = useGetPokemonList({
-  limit: 20,
-  offset: 0,
-  enabled: true,
-});
-
-// For infinite scroll
-const { allPokemon, fetchNextPage, hasNextPage, isFetchingNextPage } =
-  useGetPokemonListInfinite({
-    limit: 20,
-    enabled: true,
-  });
-```
-
-#### Benefits:
-
-- ✅ **Consistent API**: Same interface across all data fetching
-- ✅ **Built-in caching**: Automatic caching with configurable stale times
-- ✅ **Error handling**: Consistent error states and retry logic
-- ✅ **Type safety**: Full TypeScript support with proper return types
-- ✅ **Reusability**: Easy to use across different components
-
-### Utility Functions
-
-The application includes organized utility functions for common operations:
-
-#### **Pokemon Utilities (`src/utils/pokemon.ts`):**
-
-- **`getTypeColor(typeName)`**: Get CSS class for Pokémon type styling
-- **`formatPokemonId(id, digits)`**: Format ID with leading zeros
-- **`formatWeight(weight)`**: Convert weight from hectograms to kilograms
-- **`formatHeight(height)`**: Convert height from decimeters to meters
-- **`capitalize(str)`**: Capitalize first letter of string
-- **`getTypeEffectiveness(attackType, defenseType)`**: Calculate type effectiveness
-
-#### **Common Utilities (`src/utils/common.ts`):**
-
-- **`debounce(func, delay)`**: Debounce function calls
-- **`throttle(func, delay)`**: Throttle function calls
-- **`isEmpty(value)`**: Check if value is empty
-- **`generateId(length)`**: Generate random ID string
-- **`formatNumber(num)`**: Format number with commas
-- **`deepClone(obj)`**: Deep clone objects
-
-#### **Usage Example:**
-
-```typescript
-import { getTypeColor, formatPokemonId, formatWeight } from "../utils";
-
-// In a component
-const typeClass = getTypeColor("fire"); // 'type-fire'
-const formattedId = formatPokemonId(25); // '#025'
-const weight = formatWeight(60); // '6.0 kg'
-```
-
-#### **Benefits:**
-
-- ✅ **DRY Principle**: No code duplication
-- ✅ **Reusability**: Use across multiple components
-- ✅ **Testability**: Easy to unit test utility functions
-- ✅ **Maintainability**: Centralized logic for easy updates
-- ✅ **Type Safety**: Full TypeScript support
-
-### Constants and Configuration
-
-The application uses a centralized constants file for better maintainability:
-
-#### **Configuration Categories:**
-
-- **`API_CONFIG`**: API URLs, default limits, and endpoints
-- **`PAGINATION_CONFIG`**: Pagination settings and limits
-- **`QUERY_CONFIG`**: React Query cache and stale time settings
-- **`UI_CONFIG`**: Grid columns, spinner sizes, and UI constants
-- **`POKEMON_TYPE_COLORS`**: Type color mappings for styling
-- **`ERROR_MESSAGES`**: Centralized error messages
-- **`LOADING_MESSAGES`**: Centralized loading messages
-
-#### **Usage Example:**
-
-```typescript
-import { PAGINATION_CONFIG, API_CONFIG, ERROR_MESSAGES } from "../constants";
-
-// Use constants instead of magic numbers
-const limit = PAGINATION_CONFIG.ITEMS_PER_PAGE; // 20
-const apiUrl = API_CONFIG.BASE_URL; // 'https://pokeapi.co/api/v2'
-const errorMsg = ERROR_MESSAGES.POKEMON_LIST; // 'Failed to load Pokémon data...'
-```
-
-#### **Benefits:**
-
-- ✅ **Centralized Configuration**: All constants in one place
-- ✅ **Easy Maintenance**: Change values in one location
-- ✅ **Type Safety**: TypeScript support with `as const`
-- ✅ **No Magic Numbers**: Descriptive names for all values
-- ✅ **Consistency**: Same values used across the application
-
 ## Features Overview
 
 ### Pagination View
@@ -317,123 +212,3 @@ const errorMsg = ERROR_MESSAGES.POKEMON_LIST; // 'Failed to load Pokémon data..
 - **Responsive Design**: Optimized for all device sizes
 - **Accessibility**: Proper ARIA labels and keyboard navigation
 - **Performance**: Optimized with React Query caching and background updates
-
-## Configuration
-
-### Vite Configuration
-
-The project uses Vite with the following optimizations:
-
-- **Path Aliases**: `@/` maps to `src/` for clean imports
-- **React Plugin**: Fast refresh and HMR
-- **TypeScript**: Built-in TypeScript support
-- **Build Optimization**: Code splitting and asset optimization
-
-### Tailwind Configuration
-
-Custom Tailwind setup includes:
-
-- **Pokemon Type Classes**: Safelist for dynamic type styling
-- **Custom Colors**: Pokemon-themed color palette
-- **Responsive Grid**: Optimized grid system for Pokemon cards
-- **Animation Support**: Smooth transitions and hover effects
-
-### TypeScript Configuration
-
-Strict TypeScript configuration with:
-
-- **Path Mapping**: Alias support for clean imports
-- **Strict Mode**: Enhanced type checking
-- **Modern Target**: ES2020+ features
-- **React JSX**: Automatic JSX runtime
-
-## Deployment
-
-The application is configured for easy deployment on modern hosting platforms.
-
-### Vercel Deployment
-
-1. Install Vercel CLI:
-
-```bash
-npm i -g vercel
-```
-
-2. Deploy:
-
-```bash
-vercel
-```
-
-### Netlify Deployment
-
-1. Connect your repository to Netlify
-2. Set build command: `npm run build`
-3. Set publish directory: `dist`
-
-### Environment Variables
-
-No environment variables required - the app uses public PokéAPI endpoints.
-
-### Performance Considerations
-
-- **Code Splitting**: Automatic code splitting with lazy loading
-- **Image Optimization**: Optimized Pokemon images from official sources
-- **Caching**: React Query provides intelligent caching
-- **Bundle Size**: Optimized bundle with tree shaking
-
-## Development Guidelines
-
-### Code Style
-
-- **TypeScript**: Use strict typing throughout the application
-- **ESLint**: Follow the configured ESLint rules
-- **Import Organization**: Use path aliases (`@/`) for clean imports
-- **Component Structure**: Functional components with hooks
-- **Error Handling**: Always handle loading and error states
-
-### Adding New Features
-
-1. **API Integration**: Add new API functions to `src/api/`
-2. **Hooks**: Create custom hooks in `src/hooks/`
-3. **Components**: Build reusable components in `src/components/`
-4. **Types**: Define TypeScript types in `src/types/`
-5. **Constants**: Add configuration to `src/constants/`
-
-### Testing Strategy
-
-- **Unit Tests**: Test utility functions and custom hooks
-- **Integration Tests**: Test component interactions
-- **E2E Tests**: Test complete user workflows
-- **Performance Tests**: Monitor bundle size and loading times
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes following the development guidelines
-4. Add tests if applicable
-5. Run linting (`npm run lint`)
-6. Commit your changes (`git commit -m 'Add amazing feature'`)
-7. Push to the branch (`git push origin feature/amazing-feature`)
-8. Submit a pull request
-
-### Pull Request Guidelines
-
-- Provide a clear description of changes
-- Include screenshots for UI changes
-- Ensure all tests pass
-- Update documentation if needed
-- Follow the existing code style
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- **PokéAPI** - For providing the comprehensive Pokemon data
-- **React Team** - For the amazing React ecosystem
-- **TanStack** - For the excellent React Query library
-- **Tailwind CSS** - For the utility-first CSS framework
-- **Lucide** - For the beautiful icon set

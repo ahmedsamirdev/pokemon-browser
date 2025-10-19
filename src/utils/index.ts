@@ -5,7 +5,6 @@ export {
   formatPokemonId,
   formatWeight,
   formatHeight,
-  capitalize,
   getTypeEffectiveness,
 } from "./pokemon";
 
